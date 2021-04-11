@@ -20,7 +20,7 @@ export default function App() {
           <a className="navbar-brand" href="#">
             <span>
               <img
-                src="http://www.sendnspend.com/assets/images/logo.png"
+                src="/images/logo.png"
                 alt="SendNSpend"
                 width="67"
                 height="25"
