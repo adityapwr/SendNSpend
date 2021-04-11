@@ -1,54 +1,54 @@
-import { Typography, List, Card } from "antd";
-
-const { Title } = Typography;
-const { Meta } = Card;
-
 const data = [
   {
     title: "Banking & Financial Institution",
-    description: "some description for title",
+    description:
+      "Non-member banks and other financial institutions can now add a full card issuing capacity to their offerings to help their customer access their funds.",
     img: "http://www.sendnspend.com/assets/images/bankingg.png",
-    url: "http://www.sendnspend.com/banks-and-financial-institutions.html"
+    url: "http://www.sendnspend.com/banks-and-financial-institutions.html",
   },
   {
-    title: "Corporates",
-    description: "some description for title",
-    img: "http://www.sendnspend.com/assets/images/corporatee.png",
-    url: "http://www.sendnspend.com/corporate.html"
+    title: "Consultants \n\n",
+    description:
+      "Partner with us to leverage your network and become our digital sales consultant to simplify payments for your network and customers",
+    img: "http://www.sendnspend.com/assets/images/individuall-2.png",
+    url: "http://www.sendnspend.com/partner-withus.html",
   },
   {
     title: "Program Managers",
-    description: "some description for title",
-    img: "/path/to/image",
-    url: "http://www.sendnspend.com/program-managers.html"
+    description:
+      "Highly reliable making paytments and collection solutions to help you manage your digital business transactions with safety and security",
+    img: "http://www.sendnspend.com/assets/images/program-managerr.png",
+    url: "http://www.sendnspend.com/program-managers.html",
   },
   {
-    title: "Consultants",
-    description: "some description for title",
-    img: "/path/to/image",
-    url: "http://www.sendnspend.com/partner-withus.html"
-  }
+    title: "Corporates",
+    description:
+      "You have got a business to run and we are there to help you with simplified banking solutions to help you operate better",
+    img: "http://www.sendnspend.com/assets/images/corporatee.png",
+    url: "http://www.sendnspend.com/corporate.html",
+  },
 ];
 
 const Hero = () => {
   return (
-    <List
-      style={{ textAlign: "center", padding: 20 }}
-      grid={{ gutter: 2, column: 2, xs: 1, sm: 1, md: 1, lg: 2 }}
-      dataSource={data}
-      renderItem={(item) => (
-        <List.Item>
-          <Card
-            title={<a href={item.url}>{item.title}</a>}
-            description={item.description}
-            hoverable
-            bordered
-            style={{ width: 240 }}
-            cover={<img alt={item.title} src={item.img} />}
-          ></Card>
-        </List.Item>
-      )}
-    />
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
+      {data.map((item) => (
+        <div class="col">
+          <div class="card h-100">
+            <img src={item.img} class="card-img-top" alt={item.title} />
+            <div class="card-body">
+              <h5 class="card-title">{item.title}</h5>
+              <p class="card-text">{item.description}</p>
+            </div>
+            <div class="card-footer">
+              <a href={item.url} class="btn btn-primary">
+                Know More
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 

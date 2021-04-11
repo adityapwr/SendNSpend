@@ -1,50 +1,60 @@
 import "./styles.css";
-import "antd/dist/antd.css";
 
-import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
-import FormSizeDemo from "./Form";
-import Hero from "./Hero";
-import { Typography, List, Card } from "antd";
+// import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
+// import FormSizeDemo from "./Form";
+// import Hero from "./Hero";
+// import { Typography, List, Card } from "antd";
 
-const { Title } = Typography;
+// const { Title } = Typography;
 
-const { Header, Footer, Content } = Layout;
+// const { Header, Footer, Content } = Layout;
+
+import Form from "./Form";
+import CardGrid from "./Hero";
 
 export default function App() {
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-      </Header>
-      <Content style={{ padding: "15px 15px" }}>
-        <div className="site-layout-content">
-          <Title style={{ textAlign: "center" }}>SendNSpend</Title>
-          <Title style={{ textAlign: "center" }} level={2}>
-            Choose your card program to get started
-          </Title>
-          <Row>
-            <Col
-              span={{ xs: 24, sm: 24, md: 12, lg: 12 }}
-              xs={{ order: 2 }}
-              sm={{ order: 2 }}
-              md={{ order: 1 }}
-              lg={{ order: 1 }}
-            >
-              <Hero />
-            </Col>
-            <Col
-              span={{ xs: 24, sm: 24, md: 12, lg: 12 }}
-              xs={{ order: 1 }}
-              sm={{ order: 1 }}
-              md={{ order: 2 }}
-              lg={{ order: 2 }}
-            >
-              <FormSizeDemo style={{ width: "100%" }} />
-            </Col>
-          </Row>
+    <div className="bg-light bg-gradient">
+      <nav className="navbar navbar-light bg-primary">
+        <div className="container">
+          <a className="navbar-brand" href="#">
+            <span>
+              <img
+                src="http://www.sendnspend.com/assets/images/logo.png"
+                alt="SendNSpend"
+                width="67"
+                height="25"
+                className="d-inline-block align-text-top"
+              />
+            </span>
+          </a>
         </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>SendNSpend ©2021</Footer>
-    </Layout>
+      </nav>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-8 mx-auto my-2 ">
+            <h5>Prepaid Card for Every Payment Need</h5>
+            <h6>Choose your card program to get started</h6>
+            <CardGrid />
+          </div>
+          <div className="col-sm-12 col-md-4 mx-auto my-2 py-2 bg-light">
+            {/* <h5>Transacting made awesome</h5> */}
+            <div class="card border-primary mb-3">
+              <div class="card-header">
+                Get in touch with our customer success team and get your
+                institution your very own Prepaid Card.
+              </div>
+              <div class="card-body text-primary">
+                <Form />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <p class="text-center">© 2021. All rights reserved</p>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,73 +1,119 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch
-} from "antd";
+import { useForm } from "react-hook-form";
 
-const FormSizeDemo = () => {
-  const [componentSize, setComponentSize] = useState("default");
+export default function App() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  }
+
+  const onSubmit = (data) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "contact",
+        ...data,
+      }),
+    })
+      .then(() => navigate("/thank-you/"))
+      .catch((error) => alert(error));
   };
+  console.log(errors);
 
   return (
-    <div
-      style={{
-        padding: "10px",
-        background: "#EFF2F5",
-        border: "#EFF2FF solid 5px",
-        width: "100%"
-      }}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      name="contact"
+      method="post"
+      data-netlify="true"
     >
-      <Form
-        labelCol={{
-          lg: { span: 12 }
-        }}
-        wrapperCol={{
-          lg: { span: 22 }
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize
-        }}
-        onValuesChange={onFormLayoutChange}
-        size="large"
-      >
-        <Form.Item label="First Name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Last Name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Email">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Mobile Number">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Company Name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Message">
-          <Input />
-        </Form.Item>
-        <Form.Item wrapperCol={{ span: 12, offset: 12 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+      <input type="hidden" name="form-name" value="sendnspend" />
+      <div class="mb-3 sm-12">
+        <label for="FirstName" class="form-label">
+          First Name
+        </label>
+        <input
+          type="text"
+          id="FirstName"
+          className="form-control"
+          placeholder="First name"
+          {...register("FirstName", { required: true, maxLength: 80 })}
+        />
+      </div>
+      <div class="mb-3">
+        <label for="LastName" class="form-label">
+          Last Name
+        </label>
+        <input
+          type="text"
+          id="LastName"
+          className="form-control"
+          placeholder="Last name"
+          {...register("LastName", { required: true, maxLength: 100 })}
+        />
+      </div>
+      <div class="mb-3">
+        <label for="Email" class="form-label">
+          Email
+        </label>
+        <input
+          type="text"
+          id="Email"
+          className="form-control"
+          placeholder="Email"
+          {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+        />
+      </div>
+      <div class="mb-3">
+        <label for="MobileNumber" class="form-label">
+          Mobile Number
+        </label>
+        <input
+          type="tel"
+          id="MobileNumber"
+          className="form-control"
+          placeholder="Mobile Number"
+          {...register("MobileNumber", {
+            required: true,
+            minLength: 6,
+            maxLength: 12,
+          })}
+        />
+      </div>
+      <div class="mb-3">
+        <label for="Company" class="form-label">
+          Company
+        </label>
+        <input
+          type="text"
+          id="Company"
+          className="form-control"
+          placeholder="Company"
+          {...register("Company", { required: true, maxLength: 80 })}
+        />
+      </div>
+      <div class="mb-3">
+        <label for="Message" class="form-label">
+          Message
+        </label>
+        <textarea
+          type="text"
+          id="Message"
+          className="form-control"
+          placeholder="Message"
+          {...register("Message")}
+        />
+      </div>
+      <input type="submit" class="btn btn-primary" />
+    </form>
   );
-};
-
-export default FormSizeDemo;
+}
