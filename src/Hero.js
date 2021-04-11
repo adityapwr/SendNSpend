@@ -3,28 +3,28 @@ const data = [
     title: "Banking & Financial Institution",
     description:
       "Non-member banks and other financial institutions can now add a full card issuing capacity to their offerings to help their customer access their funds.",
-    img: "http://www.sendnspend.com/assets/images/bankingg.png",
+    img: "/images/bankingg.png",
     url: "http://www.sendnspend.com/banks-and-financial-institutions.html",
   },
   {
     title: "Consultants \n\n",
     description:
       "Partner with us to leverage your network and become our digital sales consultant to simplify payments for your network and customers",
-    img: "http://www.sendnspend.com/assets/images/individuall-2.png",
+    img: "/images/individuall-2.png",
     url: "http://www.sendnspend.com/partner-withus.html",
   },
   {
     title: "Program Managers",
     description:
       "Highly reliable making paytments and collection solutions to help you manage your digital business transactions with safety and security",
-    img: "http://www.sendnspend.com/assets/images/program-managerr.png",
+    img: "/images/program-managerr.png",
     url: "http://www.sendnspend.com/program-managers.html",
   },
   {
     title: "Corporates",
     description:
       "You have got a business to run and we are there to help you with simplified banking solutions to help you operate better",
-    img: "http://www.sendnspend.com/assets/images/corporatee.png",
+    img: "/images/corporatee.png",
     url: "http://www.sendnspend.com/corporate.html",
   },
 ];

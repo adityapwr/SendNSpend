@@ -7,36 +7,26 @@ export default function App() {
     formState: { errors },
   } = useForm();
 
-  function encode(data) {
+  const encode = (data) => {
     return Object.keys(data)
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
       )
       .join("&");
-  }
+  };
 
   const onSubmit = (data) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "sendnspend",
-        ...data,
-      }),
+      body: encode({ "form-name": "sendnspend", ...data }),
     })
-      .then(() => navigate("/thank-you/"))
+      .then(() => alert("Success!"))
       .catch((error) => alert(error));
   };
-  console.log(errors);
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      name="sendnspend"
-      method="post"
-      data-netlify="true"
-    >
-      <input type="hidden" name="form-name" value="sendnspend" />
+    <form onSubmit={handleSubmit(onSubmit)} name="sendnspend" netlify>
+      <input type="hidden" name="sendnspend" value="sendnspend" />
       <div class="mb-3 sm-12">
         <label for="FirstName" class="form-label">
           First Name
