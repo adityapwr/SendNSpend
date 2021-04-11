@@ -20,7 +20,7 @@ export default function App() {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": "contact",
+        "form-name": "sendnspend",
         ...data,
       }),
     })
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      name="contact"
+      name="sendnspend"
       method="post"
       data-netlify="true"
     >
