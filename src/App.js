@@ -33,12 +33,12 @@ export default function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-8 mx-auto my-2 ">
+          <div className="col-sm-12 col-md-8 col-xs-12 mx-auto my-2 order-2 order-sm-2 order-md-1 order-lg-1">
             <h5>Prepaid Card for Every Payment Need</h5>
             <h6>Choose your card program to get started</h6>
             <CardGrid />
           </div>
-          <div className="col-sm-12 col-md-4 mx-auto my-2 py-2 bg-light">
+          <div className="col-sm-12 col-md-4 col-xs-12 mx-auto my-2 py-2 bg-light order-sm-1 order-1 order-md-2 order-lg-2">
             {/* <h5>Transacting made awesome</h5> */}
             <div class="card border-primary mb-3">
               <div class="card-header">
